@@ -1,0 +1,113 @@
+<script>
+    import { onMount } from 'svelte'
+    import { item } from '../stores'
+    import NavHeader from '../compoments/NavHeader.svelte'
+
+    export let params = {}
+
+    onMount(() => {
+        function getPart() {
+            fetch(`http://127.0.0.1:3000/db?itemID=${params.id}`)
+                .then(res => res.json())
+                .then(data => $item = data)
+        }
+
+        getPart()
+        console.log($item)
+    })
+</script>
+
+<style>
+    main {
+        grid-area: main;
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        justify-content: flex-start;
+        width: 70%;
+        height: 100%;
+        background-color: var(--theme-primary-shadow);
+        padding: 10px;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        height: max-content;
+        margin: 6px;
+        padding: 0 10px;
+    }
+
+    #name {
+        padding: 2px 0;
+        border: none;
+    }
+
+    #meta-info {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: stretch;
+        padding: 0 10px;
+        border: none;
+    }
+
+    #meta-info > span {
+        padding: 0 15px;
+        font-weight: bold;
+    }
+
+    #meta-info > span:first-child {
+        padding-left: 0;
+    }
+
+    #body {
+
+    }
+
+    #activation-table {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: stretch;
+
+    }
+
+    #activation-table > div {
+        height: 100px;
+        width: 100%;
+        border: 1px var(--theme-primary-lighter) solid;
+        padding: 6px;
+    }
+
+    .key {
+        font-weight: bold;
+    }
+
+</style>
+
+<NavHeader/>
+
+<main>
+    <div id='name' class='row'>
+        <h1>{$item.name}</h1>
+    </div>
+    <div id='meta-info' class='row'>
+        <span id='short-name'>{$item.short_name}</span>
+        <span id='type-name'>{$item.type_name}</span>
+        <span id='loc-name'>{$item.loc_name}</span>
+    </div>
+    <div id ='body' class='row'>
+        <p>
+            {$item.description}
+        </p>
+    </div>
+    <div id='activation-table' class='row'>
+        <div>
+            <span class='key'>Trigger: </span><span>{$item.trigger_name}</span> --
+            <span>{$item.trigger_desc}</span>
+        </div>
+        <div>
+            <span class='key'>Frequency: </span><span>{$item.freq_name}</span> --
+            <span>{$item.freq_desc}</span>
+        </div>
+    </div>
+</main>
