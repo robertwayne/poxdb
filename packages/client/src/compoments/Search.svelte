@@ -9,6 +9,8 @@
         let tempValue = ''
         let timeout
 
+        document.getElementById('search').focus()
+
         // note: keypress doesn't propagate `backspace` so we use keydown
         searchElement.addEventListener('keydown', async (_) => {
             clearTimeout(timeout)
@@ -140,10 +142,6 @@
         list-style: none;
     }
 
-    #search-autocomplete li:first-child {
-        border: none;
-    }
-
     #search-autocomplete li {
         border-top: 1px solid var(--theme-primary-lighter);
         padding: 0 8px;
@@ -162,8 +160,8 @@
     }
 </style>
 
-<form id='search-wrapper' autocomplete='off'>
-    <input id='search' type='text'>
+<form id='search-wrapper' autocomplete='off' spellcheck='false'>
+    <input tabindex='0' id='search' type='text'>
     <div id='search-icon-wrapper'>
         <img id='search-icon' src='/static/svg/search.svg'>
     </div>
@@ -171,7 +169,7 @@
 <div id='autocomplete-wrapper'>
     <ul id='search-autocomplete' class='hidden'>
         {#each $autocomplete as item}
-            <li><a tabindex='0' href='/items/{item.id}' use:link>{item.name}</a></li>
+            <li><a href='/items/{item.id}' use:link>{item.name}</a></li>
         {/each}
     </ul>
 </div>
