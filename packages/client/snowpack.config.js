@@ -13,7 +13,7 @@ module.exports = {
     bundle: true,
     minify: true,
     treeshake: true,
-    splitting: true,
+    splitting: false,
     target: 'es2020',
     entrypoints: 'auto',
   },
