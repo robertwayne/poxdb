@@ -10,7 +10,7 @@
         "start": "yarn workspace @poxdb/client start",
         "serve": "yarn workspace @poxdb/server dev",
         "boostrap": "lerna bootstrap",
-        "update": "yarn upgrade-interactive --lateset"
+        "update": "yarn upgrade-interactive --latest"
     },
     "devDependencies": {
         "@types/prettier": "^2",
