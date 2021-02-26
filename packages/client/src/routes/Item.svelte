@@ -2,7 +2,7 @@
     import { onMount } from 'svelte'
     import { item } from '../stores'
     import NavHeader from '../compoments/NavHeader.svelte'
-
+    import { link, pop } from 'svelte-spa-router'
     export let params = {}
 
     onMount(() => {
@@ -13,7 +13,11 @@
         }
 
         getPart()
-        console.log($item)
+
+        document.getElementById('go-back').addEventListener('click', (ev) => {
+            ev.preventDefault()
+            pop()
+        })
     })
 </script>
 
@@ -24,7 +28,7 @@
         flex-direction: column;
         justify-self: center;
         justify-content: flex-start;
-        width: 70%;
+        width: 90%;
         height: 100%;
         background-color: var(--theme-primary-shadow);
         padding: 10px;
@@ -87,6 +91,9 @@
 <NavHeader/>
 
 <main>
+    <div id='meta-links' class='row'>
+        <a id='go-back' href='#'>Go back...</a>
+    </div>
     <div id='name' class='row'>
         <h1>{$item.name}</h1>
     </div>
