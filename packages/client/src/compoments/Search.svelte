@@ -6,6 +6,7 @@
 
     onMount(() => {
         const searchElement = document.getElementById('search-wrapper')
+        let searchValueElement = document.getElementById('search')
         let tempValue = ''
         let timeout
 
@@ -17,20 +18,22 @@
 
             // debounce fn to prevent GET requests on every key stroke
             timeout = setTimeout(async () => {
-                const searchValue = document.getElementById('search').value
-                if (tempValue === searchValue.trim()) {
+                if (searchValueElement.value === null) return
+                let value = searchValueElement.value
+
+                if (tempValue === value.trim()) {
                     return
                 }
 
-                tempValue = searchValue
+                tempValue = searchValueElement.value
 
                 // only search if there's 2+ characters; optimizes results & less GET requests
-                if (searchValue.length > 1) {
-                    await getPart(searchValue)
+                if (value.length > 1) {
+                    await getPart(value)
                 }
 
                 // empty the autocomplete store so we can hide the popup
-                if (searchValue.length < 2) {
+                if (value.length < 2) {
                     $autocomplete = []
                 }
 
@@ -40,13 +43,15 @@
                 } else {
                     document.getElementById('search-autocomplete').classList.add('hidden')
                 }
-            }, 500)
+            }, 250)
         })
 
         searchElement.addEventListener('submit', async (ev) => {
             ev.preventDefault()
-            let searchValue = document.getElementById('search').value
-            if (searchValue && searchValue.trim()) {
+            if (searchValueElement.value === null) return
+            let value = searchValueElement.value
+
+            if (value && value.trim()) {
                 await getResults()
                 await push('#/results')
             }
@@ -54,9 +59,7 @@
 
         const autocompleteElement = document.getElementById('search-autocomplete')
         autocompleteElement.addEventListener('keydown', (ev) => {
-            console.log(ev.key)
             if (ev.key === 'ArrowDown') {
-                console.log('down')
                 autocompleteElement.focus()
                 autocompleteElement.tabIndex++
             }
