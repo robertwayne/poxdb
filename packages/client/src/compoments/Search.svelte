@@ -43,8 +43,11 @@
 
         searchElement.addEventListener('submit', async (ev) => {
             ev.preventDefault()
-            await getResults()
-            await push('#/results')
+            let searchValue = document.getElementById('search').value
+            if (searchValue && searchValue.trim()) {
+                await getResults()
+                await push('#/results')
+            }
         })
 
         const autocompleteElement = document.getElementById('search-autocomplete')
@@ -59,7 +62,7 @@
     })
 
     async function getResults() {
-        const data = document.getElementById('search').value
+        const data = document.getElementById('search').value.trim()
         await fetch(`http://127.0.0.1:3000/db?search=${data}&limit=100`)
             .then(res => res.json())
             .then(data => $results = data)
