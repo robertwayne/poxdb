@@ -30,7 +30,17 @@
     }
 
     :global(#logo-highlight) {
-        color: var(--theme-primary-accent)
+        color: var(--theme-primary-accent);
+    }
+
+    :global(a) {
+        text-decoration: underline dotted var(--theme-primary-lighter) 1px;
+        color: inherit;
+    }
+
+    :global(a:hover) {
+        color: var(--theme-primary-accent);
+        font-weight: bold;
     }
 
     .container {
