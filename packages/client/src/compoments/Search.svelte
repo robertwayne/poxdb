@@ -1,7 +1,7 @@
 <script>
-    import { autocomplete, results } from '../stores'
     import { onMount } from 'svelte'
     import { link, push } from 'svelte-spa-router'
+    import { autocomplete, results } from '../stores'
 
 
     onMount(() => {
@@ -164,9 +164,9 @@
 </style>
 
 <form id='search-wrapper' autocomplete='off' spellcheck='false'>
-    <input tabindex='0' id='search' type='text'>
+    <label for='search'></label><input tabindex='0' id='search' type='text'>
     <div id='search-icon-wrapper'>
-        <img id='search-icon' src='/static/svg/search.svg'>
+        <img id='search-icon' src='/static/svg/search.svg' alt='search icon'>
     </div>
 </form>
 <div id='autocomplete-wrapper'>

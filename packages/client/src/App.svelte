@@ -1,7 +1,7 @@
 <script lang='typescript'>
-    import '/static/css/themes.css'
     import Router from 'svelte-spa-router'
     import { routes } from './routes.js'
+    import '/static/css/themes.css'
 </script>
 
 <style>

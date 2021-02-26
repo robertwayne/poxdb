@@ -4,15 +4,15 @@ const path = require('path')
 const db = require('./db.js')
 
 fastify.register(require('fastify-static'), {
-    root: path.resolve('../client/build')
+    root: path.resolve('../client/build'),
 })
 
 fastify.register(require('fastify-cors'), {
-    origin: '*'
+    origin: '*',
 })
 
 fastify.register(require('fastify-postgres'), {
-    connectionString: db.DB_CONNECTION_STRING
+    connectionString: db.DB_CONNECTION_STRING,
 })
 
 fastify.get('/db', async (req, res) => {
@@ -20,17 +20,21 @@ fastify.get('/db', async (req, res) => {
 
     if (req.query.search) {
         const data = [req.query.search, req.query.limit || 5]
-        const { rows } = await client.query(`
+        const { rows } = await client.query(
+            `
             SELECT p.id, p.name
             FROM body_part p
             WHERE p.name ILIKE '%' || $1 || '%'
             OR p.name ILIKE '% ' || $1 || '%'
-            LIMIT $2;`, data)
+            LIMIT $2;`,
+            data
+        )
         client.release()
         return rows
     } else if (req.query.itemID) {
         const data = [req.query.itemID]
-        const { rows } = await client.query(`
+        const { rows } = await client.query(
+            `
         SELECT 
             p.id,
             p.name,
@@ -47,7 +51,9 @@ fastify.get('/db', async (req, res) => {
             INNER JOIN locations loc on loc.id = p.location
             INNER JOIN triggers trigger on trigger.id = p.trigger
             INNER JOIN types type on type.id = p.type
-        WHERE p.id = $1;`, data)
+        WHERE p.id = $1;`,
+            data
+        )
         client.release()
         return rows[0]
     }

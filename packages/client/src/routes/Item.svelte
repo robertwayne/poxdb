@@ -1,8 +1,9 @@
 <script>
     import { onMount } from 'svelte'
+    import { pop } from 'svelte-spa-router'
     import { item } from '../stores'
     import NavHeader from '../compoments/NavHeader.svelte'
-    import { link, pop } from 'svelte-spa-router'
+
     export let params = {}
 
     onMount(() => {
