@@ -3,34 +3,42 @@
     import { onMount } from 'svelte'
     import { link, push } from 'svelte-spa-router'
 
+
     onMount(() => {
         const searchElement = document.getElementById('search-wrapper')
         let tempValue = ''
+        let timeout
 
-        searchElement.addEventListener('keyup', async (ev) => {
-            const searchValue = document.getElementById('search').value
-            if (tempValue === searchValue) {
-                return
-            }
+        // note: keypress doesn't propagate `backspace` so we use keydown
+        searchElement.addEventListener('keydown', async (_) => {
+            clearTimeout(timeout)
 
-            tempValue = searchValue
+            // debounce fn to prevent GET requests on every key stroke
+            timeout = setTimeout(async () => {
+                const searchValue = document.getElementById('search').value
+                if (tempValue === searchValue.trim()) {
+                    return
+                }
 
-            if (searchValue.length > 0) {
-                // setTimeout(async () => {
-                //     await getPart(searchValue)
-                // }, 500)
-                await getPart(searchValue)
-            }
+                tempValue = searchValue
 
-            if (document.getElementById('search').value.length === 0) {
-                $autocomplete = []
-            }
+                // only search if there's 2+ characters; optimizes results & less GET requests
+                if (searchValue.length > 1) {
+                    await getPart(searchValue)
+                }
 
-            if ($autocomplete.length > 0) {
-                document.getElementById('search-autocomplete').classList.remove('hidden')
-            } else {
-                document.getElementById('search-autocomplete').classList.add('hidden')
-            }
+                // empty the autocomplete store so we can hide the popup
+                if (searchValue.length < 2) {
+                    $autocomplete = []
+                }
+
+                // hide the popup if the store is empty
+                if ($autocomplete.length > 0) {
+                    document.getElementById('search-autocomplete').classList.remove('hidden')
+                } else {
+                    document.getElementById('search-autocomplete').classList.add('hidden')
+                }
+            }, 500)
         })
 
         searchElement.addEventListener('submit', async (ev) => {
@@ -70,16 +78,6 @@
             if (!$autocomplete.includes(item)) {
                 $autocomplete = [...$autocomplete, item]
             }
-        }
-    }
-
-    const debounce = (func, wait = 500) => {
-        let timeout
-        return function(...args) {
-            clearTimeout(timeout)
-            timeout = setTimeout(() => {
-                func.apply(this, args)
-            }, wait)
         }
     }
 </script>
