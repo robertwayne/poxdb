@@ -7,6 +7,14 @@ fastify.register(require('fastify-static'), {
     root: path.resolve('../client/build'),
 })
 
+fastify.register(helmet, {
+    contentSecurityPolicy: {
+        directives: {
+            // TODO: set up properly
+        }
+    }
+})
+
 fastify.register(require('fastify-cors'), {
     origin: '*',
 })
