@@ -5,7 +5,7 @@
     import { link } from 'svelte-spa-router'
 
     onMount(() => {
-        console.log($results)
+
     })
 </script>
 
