@@ -1,5 +1,4 @@
 const fastify = require('fastify')({ logger: true })
-const helmet = require('fastify-helmet')
 const path = require('path')
 const db = require('./db.js')
 
@@ -7,13 +6,28 @@ fastify.register(require('fastify-static'), {
     root: path.resolve('../client/build'),
 })
 
-fastify.register(helmet, {
-    contentSecurityPolicy: {
-        directives: {
-            // TODO: set up properly
-        }
-    }
-})
+if (process.env.DEBUG === 'true') {
+    console.log('in debug')
+    fastify.register(require('fastify-helmet'), {
+        contentSecurityPolicy: {
+            directives: {
+                'default-src': '*',
+            },
+        },
+    })
+} else {
+    fastify.register(require('fastify-helmet'), {
+        contentSecurityPolicy: {
+            directives: {
+                'default-src': ["'self'", 'localhost:*', '127.0.0.1:*'],
+                'font-src': ["'self'", 'https://*', 'data:'],
+                'object-src': ["'none'"],
+                'style-src-elem': ["'self'", 'https://*'],
+                'connect-src': ["'self'", 'localhost:*', '127.0.0.1:*'],
+            },
+        },
+    })
+}
 
 fastify.register(require('fastify-cors'), {
     origin: '*',
