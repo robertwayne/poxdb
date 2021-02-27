@@ -1100,6 +1100,7 @@ __metadata:
     "@snowpack/plugin-dotenv": ^2.0.5
     "@snowpack/plugin-svelte": ^3.5.2
     "@snowpack/plugin-typescript": ^1.2.1
+    "@tsconfig/svelte": ^1.0.10
     "@types/snowpack-env": ^2.3.3
     snowpack: ^3.0.13
     svelte: ^3.34.0
@@ -1160,6 +1161,13 @@ __metadata:
   peerDependencies:
     typescript: "*"
   checksum: 35760b8a73cac9d22e6ba3bb9853bb2c405ae2a8dd941629eb166854cad951ef2056f7fdeb159071032b2a988220e6553532f8422c27d5aff7da47174fb436d1
+  languageName: node
+  linkType: hard
+
+"@tsconfig/svelte@npm:^1.0.10":
+  version: 1.0.10
+  resolution: "@tsconfig/svelte@npm:1.0.10"
+  checksum: d38480e0ac7482b488083cbb8aad041862d4a178b879aac86c54ca8ce27b736d6432c79c48a25df9f4f2c03fcbbeb79c81b5e120c199a4b8b9ce38b22961d861
   languageName: node
   linkType: hard
 
