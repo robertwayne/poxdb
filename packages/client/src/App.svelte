@@ -1,4 +1,4 @@
-<script lang='typescript'>
+<script>
     import Router from 'svelte-spa-router'
     import { routes } from './routes.js'
     import '/static/css/themes.css'
