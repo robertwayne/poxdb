@@ -1,8 +1,7 @@
 {
     "name": "poxdb",
     "version": "0.1.0",
-    "description": "Monorepo for the poxdb client & server.",
-    "main": "index.js",
+    "description": "Monorepo for the PoxDB client & server.",
     "author": "Rob Wagner <rob@robwagner.dev",
     "license": "MIT",
     "private": true,
@@ -10,12 +9,12 @@
         "start": "yarn workspace @poxdb/client start",
         "serve": "yarn workspace @poxdb/server dev",
         "boostrap": "lerna bootstrap",
-        "update": "yarn upgrade-interactive --latest",
+        "update": "yarn upgrade-interactive",
         "format": "prettier --write packages/"
     },
     "devDependencies": {
-        "@types/prettier": "^2",
-        "lerna": "^3.22",
+        "@types/prettier": "^2.2.1",
+        "lerna": "^3.22.1",
         "prettier": "^2.2.1"
     },
     "workspaces": [
