@@ -6,8 +6,7 @@ fastify.register(require('fastify-static'), {
     root: path.resolve('../client/build'),
 })
 
-if (process.env.DEBUG === 'true') {
-    console.log('in debug')
+if (process.env.NODE_ENV === 'development') {
     fastify.register(require('fastify-helmet'), {
         contentSecurityPolicy: {
             directives: {
