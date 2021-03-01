@@ -3,14 +3,6 @@
     import { link, push } from 'svelte-spa-router'
     import { autocomplete, results } from '../stores'
 
-    let dbUrl = undefined
-
-    if (process.env.NODE_ENV === 'production') {
-        dbUrl = 'http://poxdb'
-    } else {
-        dbUrl = 'http://127.0.0.1:3000'
-    }
-
 
     onMount(() => {
         const searchElement = document.getElementById('search-wrapper')
@@ -76,14 +68,14 @@
 
     async function getResults() {
         const data = document.getElementById('search').value.trim()
-        await fetch(`${dbUrl}db?search=${data}&limit=100`)
+        await fetch(`http://poxdb.com/db?search=${data}&limit=100`)
             .then(res => res.json())
             .then(data => $results = data)
 
     }
 
     async function getPart(searchTerms) {
-        await fetch(`${dbUrl}/db?search=${searchTerms}`)
+        await fetch(`http://poxdb.com/db?search=${searchTerms}`)
             .then(res => res.json())
             .then(data => displayData(data))
     }
