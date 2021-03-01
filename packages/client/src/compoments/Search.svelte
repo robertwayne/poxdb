@@ -68,14 +68,14 @@
 
     async function getResults() {
         const data = document.getElementById('search').value.trim()
-        await fetch(`http://poxdb.com/db?search=${data}&limit=100`)
+        await fetch(`https://poxdb.com/db?search=${data}&limit=100`)
             .then(res => res.json())
             .then(data => $results = data)
 
     }
 
     async function getPart(searchTerms) {
-        await fetch(`http://poxdb.com/db?search=${searchTerms}`)
+        await fetch(`https://poxdb.com/db?search=${searchTerms}`)
             .then(res => res.json())
             .then(data => displayData(data))
     }

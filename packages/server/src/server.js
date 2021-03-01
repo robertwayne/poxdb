@@ -18,11 +18,11 @@ if (process.env.NODE_ENV === 'development') {
     fastify.register(require('fastify-helmet'), {
         contentSecurityPolicy: {
             directives: {
-                'default-src': ["'self'", 'localhost:*', '127.0.0.1:*', 'http://poxdb.com:*'],
+                'default-src': ["'self'", 'localhost:*', '127.0.0.1:*'],
                 'font-src': ["'self'", 'https://*', 'data:'],
                 'object-src': ["'none'"],
                 'style-src-elem': ["'self'", 'https://*'],
-                'connect-src': ["'self'", 'localhost:*', '127.0.0.1:*', 'http://poxdb.com:*'],
+                'connect-src': ["'self'", 'localhost:*', '127.0.0.1:*'],
             },
         },
     })
