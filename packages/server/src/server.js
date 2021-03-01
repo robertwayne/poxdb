@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 fastify.register(require('fastify-cors'), {
-    origin: '*',
+	origin: 'https://www.poxdb.com',
 })
 
 fastify.register(require('fastify-postgres'), {

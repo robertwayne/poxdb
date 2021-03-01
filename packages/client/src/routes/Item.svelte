@@ -8,7 +8,7 @@
 
     onMount(() => {
         function getPart() {
-            fetch(`https://poxdb.com/db?itemID=${params.id}`)
+            fetch(`https://www.poxdb.com/db?itemID=${params.id}`)
                 .then(res => res.json())
                 .then(data => $item = data)
         }
