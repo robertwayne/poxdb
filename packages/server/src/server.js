@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'development') {
                 'font-src': ["'self'", 'https://*', 'data:'],
                 'object-src': ["'none'"],
                 'style-src-elem': ["'self'", 'https://*'],
-                'connect-src': ["'self'", 'localhost:*', '127.0.0.1:*'],
+                'connect-src': ["'self'", 'localhost:*', '127.0.0.1:*', 'https://*'],
             },
         },
     })
