@@ -1,6 +1,6 @@
 <script>
     import { results } from '../stores'
-    import NavHeader from '../compoments/NavHeader.svelte'
+    import NavHeader from '../components/NavHeader.svelte'
     import { onMount } from 'svelte'
     import { link } from 'svelte-spa-router'
 

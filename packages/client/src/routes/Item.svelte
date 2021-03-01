@@ -2,7 +2,7 @@
     import { onMount } from 'svelte'
     import { pop } from 'svelte-spa-router'
     import { item } from '../stores'
-    import NavHeader from '../compoments/NavHeader.svelte'
+    import NavHeader from '../components/NavHeader.svelte'
 
     export let params = {}
 
