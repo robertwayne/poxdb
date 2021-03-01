@@ -18,11 +18,12 @@ if (process.env.NODE_ENV === 'development') {
     fastify.register(require('fastify-helmet'), {
         contentSecurityPolicy: {
             directives: {
-                'default-src': ["'self'", 'localhost:*', '127.0.0.1:*'],
-                'font-src': ["'self'", 'https://*', 'data:'],
+                'default-src': ["'self'"],
+                'font-src': ["'self'", 'fonts.gstatic.com', 'data:'],
                 'object-src': ["'none'"],
-                'style-src-elem': ["'self'", 'https://*'],
-                'connect-src': ["'self'", 'localhost:*', '127.0.0.1:*', 'https://*'],
+		'style-src': ["'self'", 'fonts.googleapis.com'],
+                'style-src-elem': ["'self'", 'fonts.googleapis.com'],
+                'connect-src': ["'self'"],
             },
         },
     })
