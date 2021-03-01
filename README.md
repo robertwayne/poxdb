@@ -11,6 +11,7 @@ Currently, supports searching for parts by name only.
 - Add images on the item pages.
 - Implement pagination on the results page.
 - Add effects into the database.
+- Need to redo CSS w/ proper media queries.
 
 
 ## Tech Stack
@@ -21,4 +22,3 @@ Monorepo w/ Yarn, Lerna, Prettier
 **Server:** Node (Fastify)
 
 **Database:** Postgres
-
