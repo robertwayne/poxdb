@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'development') {
                 'default-src': ["'self'"],
                 'font-src': ["'self'", 'fonts.gstatic.com', 'data:'],
                 'object-src': ["'none'"],
-		'style-src': ["'self'", 'fonts.googleapis.com'],
+                'style-src': ["'self'", 'fonts.googleapis.com'],
                 'style-src-elem': ["'self'", 'fonts.googleapis.com'],
                 'connect-src': ["'self'"],
             },
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 fastify.register(require('fastify-cors'), {
-	origin: 'https://www.poxdb.com',
+    origin: 'https://poxdb.com',
 })
 
 fastify.register(require('fastify-postgres'), {

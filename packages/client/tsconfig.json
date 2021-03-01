@@ -25,5 +25,5 @@
         "allowSyntheticDefaultImports": true,
         "importsNotUsedAsValues": "error"
     },
-    "extends": "@tsconfig/svelte/tsconfig.json",
+    "extends": "@tsconfig/svelte/tsconfig.json"
 }

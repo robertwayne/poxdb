@@ -2,6 +2,7 @@
     import { onMount } from 'svelte'
     import { link, push } from 'svelte-spa-router'
     import { autocomplete, results } from '../stores'
+    import { url } from '../constants'
 
 
     onMount(() => {
@@ -68,14 +69,14 @@
 
     async function getResults() {
         const data = document.getElementById('search').value.trim()
-        await fetch(`https://www.poxdb.com/db?search=${data}&limit=100`)
+        await fetch(`${url}/db?search=${data}&limit=100`)
             .then(res => res.json())
             .then(data => $results = data)
 
     }
 
     async function getPart(searchTerms) {
-        await fetch(`https://www.poxdb.com/db?search=${searchTerms}`)
+        await fetch(`${url}/db?search=${searchTerms}`)
             .then(res => res.json())
             .then(data => displayData(data))
     }

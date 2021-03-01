@@ -3,12 +3,13 @@
     import { pop } from 'svelte-spa-router'
     import { item } from '../stores'
     import NavHeader from '../components/NavHeader.svelte'
+    import { url } from '../constants'
 
     export let params = {}
 
     onMount(() => {
         function getPart() {
-            fetch(`https://www.poxdb.com/db?itemID=${params.id}`)
+            fetch(`${url}/db?itemID=${params.id}`)
                 .then(res => res.json())
                 .then(data => $item = data)
         }
