@@ -1,5 +1,5 @@
 # PoxDB
-## [https://poxdb.com](https://www.poxdb.com/#/)
+## [https://poxdb.com](https://poxdb.com)
 
 Small database interface app for a side-project I am working on. Based on the old handheld POX games by Hasbro.
 Currently, supports searching for parts by name only.
