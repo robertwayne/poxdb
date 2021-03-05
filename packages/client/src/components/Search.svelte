@@ -18,7 +18,7 @@
             'Jade Resin Carapace',
             'Cranial Amphasers',
             'Toroidal Spore Cannon',
-            'Cycling Aggression Regulator',
+            'Cyclic Aggression Regulator',
             'Homeostatic Underplating',
             'Diffusion Web Shield'
         ]
