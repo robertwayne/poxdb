@@ -10,7 +10,7 @@ Currently, supports searching for parts by name only.
 - Clean up the API on the server end.
 - Add images on the item pages.
 - Implement pagination on the results page.
-- Add effects into the database.
+- ~~Add effects into the database.~~
 - Need to redo CSS w/ proper media queries.
 
 
