@@ -5,3 +5,5 @@ node_modules
 packages/server/.env
 .yarn
 .env
+.venv
+venv/
