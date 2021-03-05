@@ -11,6 +11,19 @@
         let tempValue = ''
         let timeout
 
+        const placeholders = [
+            'Adrenal Acronodes',
+            'Azurhalo',
+            'Encdothoracic Ectoblast',
+            'Jade Resin Carapace',
+            'Cranial Amphasers',
+            'Toroidal Spore Cannon',
+            'Cycling Aggression Regulator',
+            'Homeostatic Underplating',
+            'Diffusion Web Shield'
+        ]
+
+        document.getElementById('search').placeholder = placeholders[placeholders.length * Math.random() | 0]
         document.getElementById('search').focus()
 
         // note: keypress doesn't propagate `backspace` so we use keydown
@@ -104,7 +117,7 @@
         border-radius: 6px 0 0 6px;
         border: none;
         background-color: var(--theme-primary-lighter);
-        padding: 4px;
+        padding: 4px 7px;
         outline: none;
         font-weight: bold;
         font-size: 12pt;
@@ -162,10 +175,17 @@
         text-decoration: none;
         color: inherit;
     }
+
+    ::placeholder {
+        color: var(--font-primary);
+        font-style: italic;
+        font-weight: lighter;
+        opacity: 50%;
+    }
 </style>
 
 <form id='search-wrapper' autocomplete='off' spellcheck='false'>
-    <label for='search'></label><input tabindex='0' id='search' type='text'>
+    <label for='search'></label><input tabindex='0' id='search' type='text' placeholder=''>
     <div id='search-icon-wrapper'>
         <img id='search-icon' src='/static/svg/search.svg' alt='search icon'>
     </div>
