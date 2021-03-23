@@ -29,8 +29,9 @@ if (process.env.NODE_ENV === 'development') {
     })
 }
 
+const origin = process.env.NODE_ENV === 'development' ? '*' : 'https://poxdb.com'
 fastify.register(require('fastify-cors'), {
-    origin: 'https://poxdb.com',
+    origin
 })
 
 fastify.register(require('fastify-postgres'), {
