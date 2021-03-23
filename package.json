@@ -7,6 +7,7 @@
     "private": true,
     "scripts": {
         "start": "yarn workspace @poxdb/client start",
+        "build": "yarn workspace @poxdb/client build",
         "serve": "yarn workspace @poxdb/server dev",
         "boostrap": "lerna bootstrap",
         "update": "yarn upgrade-interactive",
